@@ -50,23 +50,23 @@ export const App = () => {
   const targetRef = useRef<HTMLDivElement>(null);
   const [isSmart, setIsSmart] = useState(false);
 
-  const clickSuccess = () => {
-    // window.gtag("event", "prize_page_view", {
-    //   variant_name: "ghk_4120_3",
-    // });
-  };
+    const clickSub = () => {
+        window.gtag("event", "sub_get_click", {
+            variant_name: "second_reactivation_3",
+        });
+    };
 
-  const clickSubmit = () => {
-  // window.gtag("event", "prize_get_click", {
-  //     variant_name: "ghk_4120_3",
-  // });
-  };
+    const clickPrize = () => {
+        window.gtag("event", "prize_get_click", {
+            variant_name: "second_reactivation_3",
+        });
+    };
 
-  const clickInteraction = () => {
-    // window.gtag("event", "game_interaction", {
-    //     variant_name: "ghk_4120_3",
-    // });
-  };
+    const clickInteraction = () => {
+        window.gtag("event", "game_interaction", {
+            variant_name: "second_reactivation_3",
+        });
+    };
 
   if (isSmart) {
     return (
@@ -163,7 +163,7 @@ export const App = () => {
             block
             view="primary"
             href="https://alfa.me/YGm"
-            onClick={clickSubmit}
+            onClick={clickSub}
           >
             Забрать подписку бесплатно
           </ButtonMobile>
@@ -273,19 +273,16 @@ export const App = () => {
                 targetRef.current?.getBoundingClientRect().left
               ) {
                 setSuccess(true);
-                clickSuccess();
               } else if (
                 rubleRight - 6 < targetRight &&
                 Math.abs(rubleRight - 6 - targetRight) <= 10
               ) {
                 setSuccess(true);
-                clickSuccess();
               } else if (
                 rubleLeft + 6 > targetLeft &&
                 Math.abs(rubleLeft - targetLeft) <= 6
               ) {
                 setSuccess(true);
-                clickSuccess();
               } else {
                 setError(true);
               }
@@ -315,9 +312,10 @@ export const App = () => {
           <ButtonMobile
             block
             view="primary"
-            // href="https://alfa.me/cbpartner"
-            // onClick={clickSubmit}
-            onClick={() => setIsSmart(true)}
+            onClick={() => {
+                clickPrize();
+                setIsSmart(true);
+            }}
           >
             Забрать приз
           </ButtonMobile>
